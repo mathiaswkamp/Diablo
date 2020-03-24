@@ -133,14 +133,21 @@ namespace Diablo
 
                 string primaryPropertyAxe5 = getPrimaryProperties();
 
+                List<string> magic = new List<string>();
                 if (rarityAxe == "common")
                 {
+                    //INGEN MAGIC
+                   
                     newWeapon = new OneHandedAxe("1-Handed Axe", rngDamage, rarityAxe);
                 }
 
                  if (rarityAxe == "magic")
                 {
-                    newWeapon = new OneHandedAxe("1-Handed Axe", rngDamage, rarityAxe, primaryPropertyAxe1, primaryPropertyAxe2);
+                   //LOOP
+
+                           magic.Add(getPrimaryProperties())
+                           magic.Add(getPrimaryProperties())
+                    newWeapon = new OneHandedAxe("1-Handed Axe", rngDamage, rarityAxe, magic);
                 }
 
                  if (rarityAxe =="rare")
