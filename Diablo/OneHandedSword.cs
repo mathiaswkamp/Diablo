@@ -10,20 +10,11 @@ namespace Diablo
     {
         
 
-        private string primaryProperty;
-
-        public string PrimaryProperty
+     
+        
+        public OneHandedSword(bool oneHand, string name, double damage, string rarity, List<string> magic) : base(name, damage, rarity, magic)
         {
-            get { return primaryProperty; }
-            set { primaryProperty = value; }
-        }
-        public OneHandedSword(string name, double damage, string rarity, string primaryProperty) : base(name, damage, rarity)
-        {
-            this.name = name;
-            this.damage = damage;
-            this.rarity = rarity;
-            this.primaryProperty = primaryProperty;
-
+            
         }
 }
 }

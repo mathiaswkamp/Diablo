@@ -8,6 +8,7 @@ namespace Diablo
     {
         private string rarity;
         private string primaryProperty;
+
         Random r = new Random();
 
         public string getRarity()
@@ -41,17 +42,14 @@ namespace Diablo
             return rarity;
         }
 
-        public string getPropertiesLegendaryItem()
-        {
-            return null;
-        }
+        
 
         public string getPrimaryProperties()
         {
             int rngChoosePrimaryProperty = r.Next(1, 9);
             int rngPercentProperty = r.Next(1, 50);
             int rngPrimaryStatValue = r.Next(100, 1500);
-            int rngPrimaryStatProperty = r.Next(1, 3);
+            int rngPrimaryStatProperty = r.Next(1, 4);
 
 
             if (rngChoosePrimaryProperty == 1)
@@ -119,41 +117,45 @@ namespace Diablo
 
             Weapon newWeapon = null;
 
-            if (newWeaponType.Equals("1haxe"))
+
+            if (newWeaponType.Equals("axe"))
             {
                 string rarityAxe = getRarity();
-
-                string primaryPropertyAxe1 = getPrimaryProperties();
-
-                string primaryPropertyAxe2 = getPrimaryProperties();
-
-                string primaryPropertyAxe3 = getPrimaryProperties();
-
-                string primaryPropertyAxe4 = getPrimaryProperties();
-
-                string primaryPropertyAxe5 = getPrimaryProperties();
+                List<string> magic = new List<string>();
 
                 if (rarityAxe == "common")
                 {
-                    newWeapon = new OneHandedAxe("1-Handed Axe", rngDamage, rarityAxe);
+                    newWeapon = new Axe(true, "1Handed Axe", rngDamage, rarityAxe, null);
                 }
 
-                 if (rarityAxe == "magic")
+                if (rarityAxe == "magic")
                 {
-                    newWeapon = new OneHandedAxe("1-Handed Axe", rngDamage, rarityAxe, primaryPropertyAxe1, primaryPropertyAxe2);
+                    for (int i = 0; i < 1; i++)
+                    {
+                        magic.Add(getPrimaryProperties());
+                    }
+                    newWeapon = new Axe(true, "1Handed Axe", rngDamage, rarityAxe, magic);
                 }
 
-                 if (rarityAxe =="rare")
-                 {
-                return new OneHandedAxe("1-Handed Axe", rngDamage, rarityAxe, primaryPropertyAxe1, primaryPropertyAxe2, primaryPropertyAxe3, primaryPropertyAxe4);
+                if (rarityAxe == "rare")
+                {
+                    for (int i = 0; i <= 3; i++)
+                    {
+                        magic.Add(getPrimaryProperties());
+                    }
+                    newWeapon = new Axe(true, "1Handed Axe", rngDamage, rarityAxe, magic);
                 }
 
-                 if (rarityAxe == "legendary")
-                 {
-                    return new OneHandedAxe("1-Handed Axe", rngDamage, rarityAxe, primaryPropertyAxe1, primaryPropertyAxe2, primaryPropertyAxe3, primaryPropertyAxe4, primaryPropertyAxe5);
+                if (rarityAxe == "legendary")
+                {
+                    for (int i = 0; i <=4; i++)
+                    {
+                        magic.Add(getPrimaryProperties());
+                    }
+                    newWeapon = new Axe(true, "1Handed Axe", rngDamage, rarityAxe, magic);
                 }
 
-                 return newWeapon;
+                return newWeapon;
             }
             else
             {
