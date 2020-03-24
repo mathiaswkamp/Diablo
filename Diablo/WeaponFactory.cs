@@ -123,6 +123,7 @@ namespace Diablo
             {
                 string rarityAxe = getRarity();
 
+                //NO GO
                 string primaryPropertyAxe1 = getPrimaryProperties();
 
                 string primaryPropertyAxe2 = getPrimaryProperties();
@@ -132,7 +133,10 @@ namespace Diablo
                 string primaryPropertyAxe4 = getPrimaryProperties();
 
                 string primaryPropertyAxe5 = getPrimaryProperties();
+                //END NO GO
 
+                
+                //SWITCH-CASE
                 if (rarityAxe == "common")
                 {
                     newWeapon = new OneHandedAxe("1-Handed Axe", rngDamage, rarityAxe);
@@ -140,7 +144,7 @@ namespace Diablo
 
                  if (rarityAxe == "magic")
                 {
-                    newWeapon = new OneHandedAxe("1-Handed Axe", rngDamage, rarityAxe, primaryPropertyAxe1, primaryPropertyAxe2);
+                    newWeapon = new OneHandedAxe("1-Handed Axe", rngDamage, rarityAxe, getPrimaryProperties(), getPrimaryProperties());
                 }
 
                  if (rarityAxe =="rare")
