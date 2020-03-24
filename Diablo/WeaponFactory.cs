@@ -123,36 +123,35 @@ namespace Diablo
                 string rarityAxe = getRarity();
                 List<string> magic = new List<string>();
 
-                if (rarityAxe == "common")
+                switch (rarityAxe)
                 {
-                    newWeapon = new Axe(true, "1Handed Axe", rngDamage, rarityAxe, null);
-                }
+                    case "common":
+                        newWeapon = new Axe(true, "1Handed Axe", rngDamage, rarityAxe, null);
+                        break;
 
-                if (rarityAxe == "magic")
-                {
-                    for (int i = 0; i < 1; i++)
-                    {
-                        magic.Add(getPrimaryProperties());
-                    }
-                    newWeapon = new Axe(true, "1Handed Axe", rngDamage, rarityAxe, magic);
-                }
+                    case "magic":
+                        for (int i = 0; i < 1; i++)
+                        {
+                            magic.Add(getPrimaryProperties());
+                        }
+                        newWeapon = new Axe(true, "1Handed Axe", rngDamage, rarityAxe, magic);
+                        break;
 
-                if (rarityAxe == "rare")
-                {
-                    for (int i = 0; i <= 3; i++)
-                    {
-                        magic.Add(getPrimaryProperties());
-                    }
-                    newWeapon = new Axe(true, "1Handed Axe", rngDamage, rarityAxe, magic);
-                }
+                    case "rare":
+                        for (int i = 0; i <= 3; i++)
+                        {
+                            magic.Add(getPrimaryProperties());
+                        }
+                        newWeapon = new Axe(true, "1Handed Axe", rngDamage, rarityAxe, magic);
+                        break;
 
-                if (rarityAxe == "legendary")
-                {
-                    for (int i = 0; i <=4; i++)
-                    {
-                        magic.Add(getPrimaryProperties());
-                    }
-                    newWeapon = new Axe(true, "1Handed Axe", rngDamage, rarityAxe, magic);
+                    case "legendary":
+                        for (int i = 0; i <= 4; i++)
+                        {
+                            magic.Add(getPrimaryProperties());
+                        }
+                        newWeapon = new Axe(true, "1Handed Axe", rngDamage, rarityAxe, magic);
+                        break;
                 }
 
                 return newWeapon;

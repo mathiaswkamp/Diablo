@@ -10,7 +10,7 @@ namespace Diablo
         protected double damage;
         protected string rarity;
 
-        List<string> magicProperties = new List<string>();
+        protected List<string> magicProperties = new List<string>();
         
 
         

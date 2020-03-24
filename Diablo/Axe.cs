@@ -6,7 +6,14 @@ namespace Diablo
 {
     public class Axe :Weapon
     {
-        private bool isOneHand = false;
+        private bool isOneHand;
+
+        public bool IsOneHand
+        {
+            get { return isOneHand; }
+            set { isOneHand = value; }
+        }
+
 
 
 
