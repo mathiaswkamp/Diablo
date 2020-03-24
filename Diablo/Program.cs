@@ -11,25 +11,17 @@ namespace Diablo
         static void Main(string[] args)
         {
 
-
-            WeaponFactory weaponFactory = new WeaponFactory();   // create new factory of weapons
-
-            Weapon weapon = null;
-
             Console.WriteLine("What type of weapon would you want (axe / sword)");
             string userinput = Console.ReadLine();
-
-           
+            Weapon axe = new WeaponFactory().CreateWeapon(userinput);   // create new factory of weapons
+            Console.WriteLine("What type of weapon would you want (axe / sword)");
 
             if (userinput == "axe")
             {
-                weapon = weaponFactory.createWeapon(userinput);
-
-                
+                Console.Clear();
+                Console.WriteLine(axe.ToString());
 
             }
-
         }
     }
-
 }

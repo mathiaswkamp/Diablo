@@ -9,12 +9,10 @@ namespace Diablo
     public class OneHandedSword : Weapon
     {
         
-
-     
         
-        public OneHandedSword(bool oneHand, string name, double damage, string rarity, List<string> magic) : base(name, damage, rarity, magic)
+        public OneHandedSword(bool oneHand, string name, double damage, string rarity, List<string> magic) : base(oneHand, name, damage, rarity, magic)
         {
             
         }
-}
+    }
 }
