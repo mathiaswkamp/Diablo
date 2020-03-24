@@ -8,7 +8,7 @@ namespace Diablo
         protected string name;
         protected double damage;
         protected string rarity;
-        
+        List<string> magicProps = new List<string>();
 
         
         public string Rarity { get => name; set => name = value; }
@@ -17,11 +17,12 @@ namespace Diablo
         public double Damage { get => damage; set => damage = value; }
         
 
-        protected Weapon(string name, double damage, string rarity)
+        protected Weapon(string name, double damage, string rarity, List<string> magic)
         {
             this.name = name;
             this.damage = damage;
             this.rarity = rarity;
+            this.magicProps = magic;
             
 
         }
