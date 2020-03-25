@@ -4,18 +4,56 @@ using System.Diagnostics.Eventing.Reader;
 
 namespace Diablo
 {
+    /// <summary>
+    /// this class is made as a factory class. It is a factory of weapons.
+    /// I have a few methods.
+    /// Method GetBladeType gets a random blade for my sword object.
+    /// Method GetRarity gets a random rarity of both axe and sword objects.
+    /// Method GetPrimaryProperties gets a random property of the list to apply to the axe og sword object when
+    /// its created.
+    /// Method CreateWeapon. Creates an axe or a sword depending on what the user inputs .
+    /// It will give the object a rarity, properties depending on which rarity the object got.
+    /// if the object is a sword it will also give it a blade type.
+    /// The method will return a weapon object to the user.
+    /// </summary>
     public class WeaponFactory
     {
-
         private string rarity = null;
         private string primaryProperty = null;
+        private string bladeType = null;
         Random r = new Random();
+
+
+        public string GetBladeType()
+        {
+            int rngBladeType = r.Next(1, 5);
+
+            if (rngBladeType == 1)
+            {
+                bladeType = "Stainless Steel";
+            }
+            else if (rngBladeType == 2)
+            {
+                bladeType = "Carbon Steel";
+            }
+
+            else if (rngBladeType == 3)
+            {
+                bladeType = "Damascus Steel";
+            }
+
+            else if (rngBladeType == 4)
+            {
+                bladeType = "Spring Steel";
+            }
+
+
+            return bladeType;
+        }
 
         public string GetRarity()
         {
-            
-
-            int rngRarity = r.Next(1, 4);
+            int rngRarity = r.Next(1, 5);
 
             if (rngRarity == 1)
             {
@@ -40,11 +78,9 @@ namespace Diablo
             return rarity;
         }
 
-        
 
         public string GetPrimaryProperties()
         {
-            
             int rngChoosePrimaryProperty = r.Next(1, 10);
             int rngPercentProperty = r.Next(1, 51);
             int rngPrimaryStatValue = r.Next(100, 1501);
@@ -109,46 +145,102 @@ namespace Diablo
             return primaryProperty;
         }
 
-        
 
         public Weapon CreateWeapon(string newWeaponType)
         {
+            List<string> magic = new List<string>();
             int rngDamage = r.Next(1000, 1500);
 
             if (newWeaponType.Equals("axe"))
             {
-                List<string> magic = new List<string>();
                 string rarityAxe = GetRarity();
 
                 switch (rarityAxe)
                 {
                     case "common":
                         magic.Add(null);
-                        return new Axe(oneHand:true, name:"1Handed Axe", damage:rngDamage, rarity:rarityAxe, magic:magic);
-                        
+                        return new Axe(oneHand: true, name: "1-Handed Axe", damage: rngDamage, rarity: rarityAxe,
+                            magic: magic);
 
-                    case "magic": for (int i = 0; i <= 1; i++)
+
+                    case "magic":
+                        for (int i = 0; i <= 1; i++)
                         {
                             magic.Add(GetPrimaryProperties());
                         }
-                        return new Axe(oneHand:true, name:"1Handed Axe", damage: rngDamage, rarity: rarityAxe, magic: magic);
-                       
+
+                        return new Axe(oneHand: false, name: "2-Handed Axe", damage: rngDamage, rarity: rarityAxe,
+                            magic: magic);
+
 
                     case "rare":
                         for (int i = 0; i <= 3; i++)
                         {
                             magic.Add(GetPrimaryProperties());
                         }
-                        return new Axe(oneHand:true, name:"1Handed Axe", damage: rngDamage, rarity: rarityAxe, magic: magic);
-                        
+
+                        return new Axe(oneHand: true, name: "1-Handed Axe", damage: rngDamage, rarity: rarityAxe,
+                            magic: magic);
+
 
                     case "legendary":
                         for (int i = 0; i <= 4; i++)
                         {
                             magic.Add(GetPrimaryProperties());
                         }
-                        return new Axe(oneHand: true, name: "1Handed Axe", damage: rngDamage, rarity: rarityAxe, magic: magic);
-                        
+
+                        return new Axe(oneHand: false, name: "2-Handed Axe", damage: rngDamage, rarity: rarityAxe,
+                            magic: magic);
+
+
+                    default:
+                        return null;
+                }
+            }
+
+
+            if (newWeaponType.Equals("sword"))
+            {
+                //List<string> magic = new List<string>();
+                string raritySword = GetRarity();
+                string bladeOfSword = GetBladeType();
+
+                switch (raritySword)
+                {
+                    case "common":
+                        magic.Add(null);
+                        return new Sword(oneHand: true, name: "1-Handed Sword",blade:bladeOfSword, damage: rngDamage, rarity: raritySword, magic: magic);
+
+
+                    case "magic":
+                        for (int i = 0; i <= 1; i++)
+                        {
+                            magic.Add(GetPrimaryProperties());
+                        }
+
+                        return new Sword(oneHand: true, name: "1-Handed Sword", blade: bladeOfSword, damage: rngDamage, rarity: raritySword,
+                            magic: magic);
+
+
+                    case "rare":
+                        for (int i = 0; i <= 3; i++)
+                        {
+                            magic.Add(GetPrimaryProperties());
+                        }
+
+                        return new Sword(oneHand: false, name: "2-Handed Sword", blade: bladeOfSword, damage: rngDamage, rarity: raritySword,
+                            magic: magic);
+
+
+                    case "legendary":
+                        for (int i = 0; i <= 4; i++)
+                        {
+                            magic.Add(GetPrimaryProperties());
+                        }
+
+                        return new Sword(oneHand: true, name: "2-Handed Sword", blade: bladeOfSword, damage: rngDamage, rarity: raritySword,
+                            magic: magic);
+
 
                     default:
                         return null;
@@ -156,14 +248,7 @@ namespace Diablo
             }
             else
             {
-                if (newWeaponType.Equals("sword"))
-                {
-                    return null; //new OneHandedSword(name:"1-Handed Sword",damage:rngDamage);
-                }
-                else
-                {
-                    return null;
-                }
+                return null;
             }
         }
     }

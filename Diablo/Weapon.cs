@@ -5,6 +5,15 @@ using Microsoft.Win32;
 
 namespace Diablo
 {
+
+    /// <summary>
+    /// this is my super class.
+    /// My weapons inhertis from this Weapon class.
+    /// It has attributes of name, damage, rarity, isOneHand and a list og magicProperties
+    /// it has a protected constructor so i can inherit from this to my other classes of weapon.
+    /// I have made an override on the method ToString so that i can print out my attributes
+    /// very easily
+    /// </summary>
     public abstract class Weapon
     {
         protected string name;
